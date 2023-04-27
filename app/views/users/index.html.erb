@@ -1,0 +1,25 @@
+<h1>Listing Users</h1>
+<%= link_to 'New user', new_user_path %>
+<br>
+<% if @users.exists? %>
+    <table>
+    <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th colspan="3"></th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td><%= link_to 'Show', user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user_path(user),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </table>
+<% end %>
+
+<%= link_to 'Home', root_path %>
